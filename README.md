@@ -14,6 +14,9 @@ npx cap sync
 <docgen-index>
 
 * [`echo(...)`](#echo)
+* [`imprimir(...)`](#imprimir)
+* [`imprimirWithJar(...)`](#imprimirwithjar)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -33,5 +36,43 @@ echo(options: { value: string; }) => Promise<{ value: string; }>
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
 
 --------------------
+
+
+### imprimir(...)
+
+```typescript
+imprimir(options: ImprimirOptions) => Promise<void>
+```
+
+| Param         | Type                                                        |
+| ------------- | ----------------------------------------------------------- |
+| **`options`** | <code><a href="#imprimiroptions">ImprimirOptions</a></code> |
+
+--------------------
+
+
+### imprimirWithJar(...)
+
+```typescript
+imprimirWithJar(options: ImprimirOptions) => Promise<void>
+```
+
+| Param         | Type                                                        |
+| ------------- | ----------------------------------------------------------- |
+| **`options`** | <code><a href="#imprimiroptions">ImprimirOptions</a></code> |
+
+--------------------
+
+
+### Interfaces
+
+
+#### ImprimirOptions
+
+| Prop                | Type                |
+| ------------------- | ------------------- |
+| **`ip`**            | <code>string</code> |
+| **`puerto`**        | <code>number</code> |
+| **`dataaimprimir`** | <code>string</code> |
 
 </docgen-api>
