@@ -15,6 +15,7 @@ import android.content.Context;
 
 @CapacitorPlugin(name = "MainPrinter")
 public class MainPrinterPlugin extends Plugin {
+    private static Context mContext;
 
     private MainPrinter implementation = new MainPrinter();
 
@@ -30,9 +31,12 @@ public class MainPrinterPlugin extends Plugin {
     @PluginMethod
     public void imprimir(PluginCall call) {
         String ipAddress = call.getString("ip");
-        int port = call.getInt("port", 9100);
-        String data = call.getString("data");
-        
+        int port = call.getInt("puerto", 9100);
+        String data = call.getString("dataaimprimir");
+        Log.e("imprimir ip",ipAddress);
+        Log.e("imprimir port", String.valueOf(port));
+        Log.e("imprimir data",data);
+
 
         try (Socket socket = new Socket(ipAddress, port);
              OutputStream outputStream = socket.getOutputStream()) {
@@ -47,7 +51,9 @@ public class MainPrinterPlugin extends Plugin {
     @PluginMethod
     public void imprimirWithJar(PluginCall call) {
        String ipAddress = call.getString("ip");
-       String data = call.getString("data");
+       String data = call.getString("dataaimprimir");
+        Log.e("imprimirwj ip",ipAddress);
+        Log.e("imprimirwj data",data);
 
 
        try {
@@ -65,6 +71,8 @@ public class MainPrinterPlugin extends Plugin {
            Print.CutPaper(1, 1);
            Print.PrintAndReturnStandardMode();
        } catch (Exception e) {
+           Log.e("error en wj","mostrar error");
+
            e.printStackTrace();
        }  call.reject("Failed to print");
    }
@@ -75,8 +83,13 @@ public class MainPrinterPlugin extends Plugin {
             public void run() {
                 super.run();
                 try {
+                    if (Print.PortOpen(mContext, "WiFi,"+ipImpresora+",9100") != 0){
                         Log.e("PortOpen","No conecta");
+                    }else{
+                        Log.e("PortOpen","conecta");
+                    }
                 }catch (Exception e){
+                     Log.e("PortOpen","No conecta en el cacth");
                     e.printStackTrace();
                 }
 
