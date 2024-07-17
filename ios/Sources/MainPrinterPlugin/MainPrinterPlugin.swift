@@ -21,6 +21,15 @@ public class MainPrinterPlugin: CAPPlugin, CAPBridgedPlugin {
         ])
     }
 
+        @objc func initPrint(_ call: CAPPluginCall) {
+        let value = call.getString("ip") ?? ""
+        call.resolve([
+            "value": implementation.echo(value)
+        ])
+    }
+
+
+
         @objc func imprimir(_ call: CAPPluginCall) {
         guard let ipAddress = call.getString("ipAddress"),
               let data = call.getString("data") else {

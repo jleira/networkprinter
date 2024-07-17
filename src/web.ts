@@ -15,4 +15,10 @@ export class MainPrinterWeb extends WebPlugin implements MainPrinterPlugin {
     console.log(options.dataaimprimir);
     window.print(); 
   }
+
+  async initPrint(ip: string): Promise<void> {
+    console.log(ip)
+  }
+
+  
 }

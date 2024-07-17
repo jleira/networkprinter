@@ -2,6 +2,8 @@ export interface MainPrinterPlugin {
   echo(options: { value: string }): Promise<{ value: string }>;
   imprimir(options: ImprimirOptions): Promise<void>;
   imprimirWithJar(options: ImprimirOptions): Promise<void>;
+  initPrint(ip: string): Promise<void>;
+  
 }
 
 export interface ImprimirOptions {
